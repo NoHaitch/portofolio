@@ -31,7 +31,7 @@ export default async function Home() {
           height={440}
           src="/images/main.png"
           alt="Francisco Picture"
-          className="rounded-[40%] drop-shadow-[0px_0px_13px_#00DF9A] bg-[#]"
+          className="rounded-[40%] drop-shadow-[0px_0px_13px_#00DF9A]"
         />
       </main>
     </>
