@@ -19,6 +19,7 @@
 }
 
 body {
+  overflow: hidden;
   background-color: #000400;
   background-image: radial-gradient(59.46% 107.97% at 20.56% 59.72%, #1D2021 0.05%, #1D2021 0.06%, rgba(0, 4, 0, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
 }

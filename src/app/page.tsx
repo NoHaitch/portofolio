@@ -26,13 +26,37 @@ export default async function Home() {
           </div>
           <Button title="Get Started" />
         </div>
-        <Image
-          width={440}
-          height={440}
-          src="/images/main.png"
-          alt="Francisco Picture"
-          className="rounded-[40%] drop-shadow-[0px_0px_13px_#00DF9A]"
-        />
+        <div className="flex flex-row align-middle justify-center space-x-16">
+          <div className="flex flex-col opacity-75 space-y-8 justify-center align-middle">
+            <div className="w-[150px] h-[100px] text-white bg-[#1E1E1E] text-center rounded-3xl p-2">
+            </div>
+            <div className="w-[150px] h-[100px] text-white bg-[#1E1E1E] text-center rounded-3xl p-2">
+            </div>
+            <div className="w-[150px] h-[100px] text-white bg-[#1E1E1E] text-center rounded-3xl p-2">
+            </div>
+          </div>
+          <div className="flex flex-row">
+            <svg
+              width="354"
+              height="532"
+              viewBox="0 0 354 532"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="absolute top-[30%]"
+            >
+              <ellipse cx="177" cy="266" rx="177" ry="266" fill="#00926F"/>
+            </svg>
+
+            <Image
+              width={400}
+              height={400}
+              src="/images/main.png"
+              alt="Francisco Picture"
+              className="rounded-[40%] drop-shadow-[0px_0px_13px_#00DF9A]"
+            />
+          </div>
+        </div>
+        
       </main>
     </>
   );
