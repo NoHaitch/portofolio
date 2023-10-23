@@ -52,11 +52,10 @@ export default async function Home() {
               height={400}
               src="/images/main.png"
               alt="Francisco Picture"
-              className="rounded-[40%] drop-shadow-[0px_0px_13px_#00DF9A]"
+              className="rounded-[40%] drop-shadow-[0px_0px_13px_#F99C30]"
             />
           </div>
         </div>
-        
       </main>
     </>
   );
