@@ -11,7 +11,7 @@ export default function Header() {
             href='/'
             className='flex items-center justify-center gap-4 font-serif text-2xl font-bold'
           >
-            <ProfileAvatar className='size-14' />
+            <ProfileAvatar className='size-10' />
             Francisco
           </Link>
         </div>
