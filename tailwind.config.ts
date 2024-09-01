@@ -19,9 +19,9 @@ const config: Config = {
 		},
 		extend: {
 			fontFamily: {
-				sans:['var(--font-sans)', ...fontFamily.sans],
-				serif:['var(--font-serif)', ...fontFamily.serif]
-			}, 
+				sans: ['var(--font-sans)', ...fontFamily.sans],
+				serif: ['var(--font-serif)', ...fontFamily.serif]
+			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
@@ -75,6 +75,6 @@ const config: Config = {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [require('@tailwindcss/typography'), require("tailwindcss-animate")],
 };
 export default config;
