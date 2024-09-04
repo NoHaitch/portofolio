@@ -21,11 +21,11 @@ export default async function Post({ params }: { params: { slug: string } }) {
     <section className='pb-24 pt-32'>
       <div className='container max-w-4xl'>
         <Link
-          href='/posts'
+          href='/activities'
           className='mb-8 inline-flex items-center gap-2 text-sm font-light'
         >
           <ArrowLeftIcon className='size-5' />
-          <span>Back to post</span>
+          <span>Back to activities</span>
         </Link>
 
         {image && (
@@ -39,14 +39,14 @@ export default async function Post({ params }: { params: { slug: string } }) {
           </div>
         )}
 
-        <header>
+        <header className=''>
           <h1 className='title'>{title}</h1>
           <div className='flex items-center gap-2 text-sm font-light text-muted-foreground'>
             {author} / {formatDate(publishedAt ?? ' ')}
           </div>
         </header>
 
-        <main className='prose dark:prose-invert mt-16'>
+        <main className='prose mt-16 max-w-4xl dark:prose-invert'>
           <MDXContent source={content} />
         </main>
       </div>

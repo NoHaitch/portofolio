@@ -34,6 +34,14 @@ export default function Header() {
           </li>
           <li>
             <Link
+              href='/activities'
+              className='transition-colors hover:text-foreground'
+            >
+              Activities
+            </Link>
+          </li>
+          <li>
+            <Link
               href='/contact'
               className='transition-colors hover:text-foreground'
             >
