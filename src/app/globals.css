@@ -101,7 +101,7 @@
   }
 
   .title {
-    @apply font-serif text-4xl font-bold underline decoration-border/75 mb-2;
+    @apply font-serif text-3xl font-bold underline decoration-border/75 mb-2;
   }
 
   .prose pre {

@@ -1,19 +1,13 @@
 import Image from 'next/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import RecentPosts from '@/components/recent-activities'
 
 export default function Home() {
-  const content = `
-  # This is a markdown heading
-  This is a test
-
-  ### HELP
-
-  ## ME ?
-  `
-
   return (
     <section className='py-24'>
-      <MDXRemote source={content} />
+      <div className='container max-w-4xl'>
+        <RecentPosts />
+      </div>
     </section>
   )
 }
