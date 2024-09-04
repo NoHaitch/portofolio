@@ -10,12 +10,9 @@ export default async function RecentPosts() {
       <div>
         <h2 className='title mb-8'>Recent Activities</h2>
         <ShortPost posts={posts} />
-        <Link
-          href='/activities'
-          className='mt-4 w-full inline-flex justify-center items-center gap-2 text-muted-foreground'
-        >
-          <span>All posts</span>
-        </Link>
+        <div className='mt-4 inline-flex w-full items-center justify-center gap-2 text-muted-foreground'>
+          <Link href='/activities'>All posts</Link>
+        </div>
       </div>
     </section>
   )

@@ -10,7 +10,6 @@ export default function ProfileAvatar({
   className,
   imageClassName
 }: ProfileAvatarProps) {
-  
   return (
     <Avatar className={className}>
       <AvatarImage

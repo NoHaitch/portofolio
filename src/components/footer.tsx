@@ -58,7 +58,7 @@ export default function Footer() {
     <footer className='py-8'>
       <div className='container max-w-4xl'>
         <div className='flex flex-col justify-between gap-4'>
-          <ul className='flex items-center justify-center gap-4 flex-wrap'>
+          <ul className='flex flex-wrap items-center justify-center gap-4'>
             <li>
               <Link
                 href='/skills'
@@ -84,7 +84,7 @@ export default function Footer() {
               </Link>
             </li>
           </ul>
-          <div className='flex justify-center items-center gap-6 flex-wrap'>
+          <div className='flex flex-wrap items-center justify-center gap-6'>
             {navigation.map(item => (
               <a
                 key={item.name}

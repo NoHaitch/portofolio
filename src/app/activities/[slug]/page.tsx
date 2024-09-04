@@ -10,7 +10,7 @@ import { ArrowLeftIcon } from '@radix-ui/react-icons'
 
 export async function generateStaticParams() {
   const posts = await getPosts()
-  const slugs = posts.map(post => ({slug: post.slug}))
+  const slugs = posts.map(post => ({ slug: post.slug }))
 
   return slugs
 }
