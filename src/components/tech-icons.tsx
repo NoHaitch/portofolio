@@ -2,11 +2,9 @@ import { FC } from 'react'
 import {
   SiJavascript,
   SiTypescript,
-  SiPython,
   SiRuby,
   SiCsharp,
   SiPhp,
-  SiGo,
   SiRust,
   SiHtml5,
   SiCss3,
@@ -18,18 +16,25 @@ import {
   SiMysql,
   SiPostgresql,
   SiSqlite,
-  SiTailwindcss
+  SiTailwindcss,
+  SiC,
+  SiCplusplus,
+  SiMake,
+  SiNumpy
 } from 'react-icons/si'
+import { FaJava, FaPython, FaDocker } from 'react-icons/fa'
+import { FaGolang } from 'react-icons/fa6'
+
 import { twMerge } from 'tailwind-merge'
 
 const techIconMap: { [key: string]: FC<any> } = {
   javascript: SiJavascript,
   typescript: SiTypescript,
-  python: SiPython,
+  python: FaPython,
   ruby: SiRuby,
-  csharp: SiCsharp,
+  'c#': SiCsharp,
   php: SiPhp,
-  go: SiGo,
+  go: FaGolang,
   rust: SiRust,
   html: SiHtml5,
   css: SiCss3,
@@ -41,7 +46,13 @@ const techIconMap: { [key: string]: FC<any> } = {
   mysql: SiMysql,
   postgresql: SiPostgresql,
   sqlite: SiSqlite,
-  tailwind: SiTailwindcss
+  tailwind: SiTailwindcss,
+  java: FaJava,
+  c: SiC,
+  cpp: SiCplusplus,
+  make: SiMake,
+  numpy: SiNumpy,
+  docker: FaDocker
 }
 
 interface TechIconsProps {
@@ -69,7 +80,10 @@ const TechIcons: FC<TechIconsProps> = ({
                 )}
               >
                 <Icon className={iconClassName} />
-                <span>{tech === 'go' ? 'golang' : tech}</span>
+                <span>
+                  {' '}
+                  {tech === 'go' ? 'golang' : tech === 'c' ? 'langguage' : tech}
+                </span>
               </div>
             ) : (
               <span>{tech}</span>

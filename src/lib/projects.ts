@@ -25,7 +25,7 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
         const filePath = path.join(rootDirectory, `${slug}.mdx`)
         const fileContents = fs.readFileSync(filePath, { encoding: 'utf-8' })
         const { data, content } = matter(fileContents)
-        
+
         return { metadata: { ...data, slug }, content }
 
     } catch (error) {
@@ -60,4 +60,14 @@ export function getProjectMetadata(filepath: string): ProjectMetadata {
     const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
     const { data } = matter(fileContent)
     return { ...data, slug }
+}
+
+export async function getTechUsedSet(projects: ProjectMetadata[]): Promise<Set<string>> {
+    const techUsedSet = new Set<string>()
+
+    projects.forEach(project => {
+        project.techUsed?.forEach(tech => techUsedSet.add(tech))
+    })
+
+    return techUsedSet
 }
