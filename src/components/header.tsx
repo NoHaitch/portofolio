@@ -42,7 +42,7 @@ export default function Header() {
           </li>
           <li>
             <Link
-              href='/contact'
+              href='/contacts'
               className='transition-colors hover:text-foreground'
             >
               Contact

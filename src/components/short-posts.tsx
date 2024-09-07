@@ -16,9 +16,9 @@ export default function ShortPost({ posts }: { posts: PostMetadata[] }) {
           >
             <div className=''>
               <div className='flex justify-between'>
-                <p className='text-lg font-semibold'>{post.title}</p>
+                <p className='text-md font-semibold line-clamp-1'>{post.title}</p>
                 {post.publishedAt && (
-                  <p className='mt-1 text-sm font-light'>
+                  <p className='mt-1 text-sm font-light text-right w-1/4'>
                     {formatDate(post.publishedAt)}
                   </p>
                 )}

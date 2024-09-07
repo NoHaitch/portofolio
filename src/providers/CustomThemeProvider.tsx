@@ -1,6 +1,7 @@
 'use client'
 
-import { ThemeProvider } from 'next-themes'
+import { ThemeProvider, useTheme } from 'next-themes'
+import { Toaster } from 'sonner'
 
 export default function CustomThemeProvider({
   children
@@ -15,6 +16,20 @@ export default function CustomThemeProvider({
       disableTransitionOnChange
     >
       {children}
+      <ToasterProvider />
     </ThemeProvider>
+  )
+}
+
+function ToasterProvider() {
+  const { resolvedTheme } = useTheme()
+
+  return (
+    <Toaster
+      closeButton
+      richColors
+      position='top-right'
+      theme={resolvedTheme === 'dark' ? 'dark' : 'light'}
+    />
   )
 }

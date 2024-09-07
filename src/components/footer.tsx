@@ -77,7 +77,15 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href='/contact'
+                href='/activities'
+                className='text-sm leading-6 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground'
+              >
+                Activities
+              </Link>
+            </li>
+            <li>
+              <Link
+                href='/contacts'
                 className='text-sm leading-6 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground'
               >
                 Contact
