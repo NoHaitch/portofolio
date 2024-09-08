@@ -33,9 +33,13 @@ export default function RootLayout({
         )}
       >
         <CustomThemeProvider>
-          <Header />
-          <main className='grow'>{children}</main>
-          <Footer />
+          <section className='flex justify-center'>
+            <section className='w-[90%]'>
+              <Header />
+              <main className='grow'>{children}</main>
+              <Footer />
+            </section>
+          </section>
         </CustomThemeProvider>
       </body>
     </html>

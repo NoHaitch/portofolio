@@ -55,7 +55,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
           </div>
         </header>
 
-        <main className='prose mt-16 max-w-4xl dark:prose-invert'>
+        <main className='prose mt-16 max-w-5xl dark:prose-invert'>
           <MDXContent source={content} />
         </main>
       </div>

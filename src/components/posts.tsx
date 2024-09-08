@@ -29,7 +29,7 @@ export default function Posts({ posts }: { posts: PostMetadata[] }) {
               <div className='flex justify-between'>
                 <p className='text-lg font-semibold'>{post.title}</p>
                 {post.publishedAt && (
-                  <p className='mt-1 text-sm font-light w-1/4 text-right'>
+                  <p className='mt-1 w-1/4 text-right text-sm font-light'>
                     {formatDate(post.publishedAt)}
                   </p>
                 )}

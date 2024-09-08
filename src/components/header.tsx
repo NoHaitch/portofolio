@@ -5,7 +5,7 @@ import ProfileAvatar from './profil-avatar'
 export default function Header() {
   return (
     <header className='fixed inset-x-0 top-0 z-50 bg-background/75 py-6 backdrop-blur-sm'>
-      <nav className='container flex max-w-4xl items-center justify-between'>
+      <nav className='container flex max-w-5xl items-center justify-between'>
         <div className=''>
           <Link
             href='/'
@@ -16,14 +16,6 @@ export default function Header() {
           </Link>
         </div>
         <ul className='flex items-center gap-6 text-sm font-light text-muted-foreground'>
-          <li>
-            <Link
-              href='/skills'
-              className='transition-colors hover:text-foreground'
-            >
-              Skills
-            </Link>
-          </li>
           <li>
             <Link
               href='/projects'

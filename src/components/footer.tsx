@@ -56,17 +56,9 @@ const navigation = [
 export default function Footer() {
   return (
     <footer className='py-8'>
-      <div className='container max-w-4xl'>
+      <div className='container max-w-5xl'>
         <div className='flex flex-col justify-between gap-4'>
           <ul className='flex flex-wrap items-center justify-center gap-4'>
-            <li>
-              <Link
-                href='/skills'
-                className='text-sm leading-6 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground'
-              >
-                Skills
-              </Link>
-            </li>
             <li>
               <Link
                 href='/projects'

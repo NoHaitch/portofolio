@@ -54,6 +54,7 @@ export default function ContactForm() {
               type='text'
               placeholder='Name'
               autoComplete='given-name'
+              className='border-2'
               {...register('name')}
             />
 
@@ -70,6 +71,7 @@ export default function ContactForm() {
               type='email'
               placeholder='Email'
               autoComplete='email'
+              className='border-2'
               {...register('email')}
             />
 
@@ -81,7 +83,12 @@ export default function ContactForm() {
           </div>
 
           <div className='sm:col-span-2'>
-            <Textarea rows={6} placeholder='Message' {...register('message')} />
+            <Textarea
+              rows={6}
+              placeholder='Message'
+              {...register('message')}
+              className='border-2'
+            />
             {errors.message?.message && (
               <p className='ml-1 mt-2 text-sm text-rose-400'>
                 {errors.message.message}
