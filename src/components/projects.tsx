@@ -25,7 +25,9 @@ export default function Projects({
                 </div>
               </div>
             )}
-            <div className='absolute w-full -translate-y-8 bg-zinc-200 p-2 dark:bg-zinc-900'>
+            <div
+              className={`absolute w-full ${project.image ?'-translate-y-8' : 'rounded-lg'} bg-zinc-200 p-2 dark:bg-zinc-900`}
+            >
               <div className=''>
                 <h2 className='title line-clamp-1 text-xl no-underline'>
                   {project.title}

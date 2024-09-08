@@ -8,8 +8,11 @@
     techUsed: [python]
 ---
 
+
 Text finder using Aho-Corasick algorithm in Python with other additional features like text highlighting.
 
-## ????
-
-## ????
+Implementation of Aho-Corasick algorithm in Python. Aho-Corasick is an algorithm used for Pattern Searching involving a 
+text and many patterns. Aho-Corasick uses trie data structure to build relations between patterns with similiar characters. 
+By preprocessing the list of pattern, we can make a trie data structure with additional failure links and succesfull links. 
+Failure links are links used when a comparison of a pattern failed so it avoids bad string matching. Succesfull links are essentialy 
+patterns that also matches due to being a substring of another pattern.

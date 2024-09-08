@@ -20,13 +20,19 @@ import {
   SiC,
   SiCplusplus,
   SiMake,
-  SiNumpy
+  SiNumpy,
+  SiResend,
+  SiShadcnui,
+  SiMdx,
+  SiVercel,
+  SiSass,
+  SiXampp,
+  SiFigma
 } from 'react-icons/si'
-import { FaJava, FaPython, FaDocker } from 'react-icons/fa'
+import { FaJava, FaPython, FaDocker, FaNode } from 'react-icons/fa'
 import { FaGolang } from 'react-icons/fa6'
 import { twMerge } from 'tailwind-merge'
 
-// Map of tech names to their respective icons
 const techIconMap: { [key: string]: FC<any> } = {
   javascript: SiJavascript,
   typescript: SiTypescript,
@@ -52,7 +58,15 @@ const techIconMap: { [key: string]: FC<any> } = {
   cpp: SiCplusplus,
   make: SiMake,
   numpy: SiNumpy,
-  docker: FaDocker
+  docker: FaDocker,
+  resend: SiResend,
+  shadcn: SiShadcnui,
+  mdx: SiMdx,
+  node: FaNode,
+  vercel: SiVercel,
+  sass: SiSass,
+  xampp: SiXampp,
+  figma: SiFigma
 }
 
 interface TechIconProps {
