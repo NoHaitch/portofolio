@@ -31,7 +31,7 @@ const ContactFormEmail: React.FC<Readonly<ContactFormEmailProps>> = ({
       <Text style={header}>
         Someone have filled the contact form submission from your{' '}
         <Link href='#'>portofolio.</Link>
-        Make sure you contact the email to response as they won't see this email
+        Make sure you contact the email to response as they won&apos;t see this email
         sent.
       </Text>
       <Container style={container}>

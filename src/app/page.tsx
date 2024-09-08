@@ -22,7 +22,7 @@ export default function Home() {
               <HeroTypingAnimation />
             </div>
             <Link href='/contacts'>
-              <Button className='mx-2 my-4 sm:w-1/2'>Let's Talk</Button>
+              <Button className='mx-2 my-4 sm:w-1/2'>Let&apos;s Talk</Button>
             </Link>
           </div>
           <div className='overflow-hidden rounded-xl bg-zinc-300 p-1 dark:bg-zinc-700 sm:m-1'>
@@ -58,8 +58,8 @@ export default function Home() {
             <h1 className='font-serif text-2xl font-bold'>About Me</h1>
             <p className=''>
               I am the person you can count on to have a good time without
-              losing sight of what's important. I'm a responsible, open-minded
-              person who's always up for exploring new ideas and experiences. I
+              losing sight of what&apos;s important. I&apos;m a responsible, open-minded
+              person who&apos;s always up for exploring new ideas and experiences. I
               believe in living life to the fullest while staying focused on my
               goals for the future.
             </p>
