@@ -38,18 +38,9 @@ export default function Home() {
         <div className='flex w-full flex-col justify-end pb-12'>
           <div className='flex flex-wrap items-center justify-center text-center font-semibold text-muted-foreground'>
             <p className='flex flex-wrap items-center justify-center text-center'>
-              |&nbsp;
-              <span>
-                Computational Science and Engineering Laboratory Assistant
-              </span>
-              &nbsp;|&nbsp;
-              <span>
-                Informatics Engineering Student @ Bandung Institute of
-                Technology
-              </span>
-              &nbsp;|&nbsp;
-              <span>| Staff of Academic Division HMIF ITB 2024/2025</span>
-              &nbsp;|
+              | Computational Science and Engineering Laboratory Assistant |
+              Informatics Engineering Student @ Bandung Institute of Technology
+              | Staff of Academic Division HMIF ITB 2024/2025 |
             </p>
           </div>
         </div>
@@ -58,10 +49,10 @@ export default function Home() {
             <h1 className='font-serif text-2xl font-bold'>About Me</h1>
             <p className=''>
               I am the person you can count on to have a good time without
-              losing sight of what&apos;s important. I&apos;m a responsible, open-minded
-              person who&apos;s always up for exploring new ideas and experiences. I
-              believe in living life to the fullest while staying focused on my
-              goals for the future.
+              losing sight of what&apos;s important. I&apos;m a responsible,
+              open-minded person who&apos;s always up for exploring new ideas
+              and experiences. I believe in living life to the fullest while
+              staying focused on my goals for the future.
             </p>
             <Link
               href='https://www.linkedin.com/in/francisco-trianto/'
@@ -72,7 +63,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className='mb-24 flex w-full items-center justify-center gap-2'>
+        <div className='mb-24 flex w-full flex-wrap items-center justify-center gap-2'>
           <Link href='/projects'>
             <Button>Check out my Projects!</Button>
           </Link>

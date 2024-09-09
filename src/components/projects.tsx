@@ -9,7 +9,7 @@ export default function Projects({
   projects: ProjectMetadata[]
 }) {
   return (
-    <div className='mb-12 grid grid-cols-1 gap-x-8 gap-y-36 sm:grid-cols-2 sm:gap-y-40'>
+    <div className='mb-12 grid grid-cols-1 gap-x-8 gap-y-40 sm:grid-cols-2'>
       {projects.map(project => (
         <div key={project.slug} className='group relative flex flex-col'>
           <Link href={`/projects/${project.slug}`}>
@@ -26,7 +26,7 @@ export default function Projects({
               </div>
             )}
             <div
-              className={`absolute w-full ${project.image ?'-translate-y-8' : 'rounded-lg'} bg-zinc-200 p-2 dark:bg-zinc-900`}
+              className={`absolute w-full ${project.image ? '-translate-y-8' : 'rounded-lg'} bg-zinc-200 p-2 dark:bg-zinc-900`}
             >
               <div className=''>
                 <h2 className='title line-clamp-1 text-xl no-underline'>

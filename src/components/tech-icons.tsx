@@ -12,9 +12,11 @@ const TechIcons: FC<TechIconsProps> = ({
   iconClassName,
   containerClassName
 }) => {
+  const uniqueTechs = Array.from(new Set(techs))
+
   return (
     <>
-      {techs.map(tech => (
+      {uniqueTechs.map(tech => (
         <TechIcon
           key={tech}
           tech={tech}

@@ -9,7 +9,7 @@ export default function ShortProjects({
   projects: ProjectMetadata[]
 }) {
   return (
-    <div className='mb-12 grid grid-cols-1 gap-x-8 gap-y-36 sm:grid-cols-2 sm:gap-y-40'>
+    <div className='mb-12 grid grid-cols-1 gap-x-8 gap-y-40 sm:grid-cols-2'>
       {projects.map(project => (
         <div key={project.slug} className='group relative flex flex-col'>
           <Link href={`/projects/${project.slug}`}>
