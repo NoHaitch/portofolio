@@ -12,7 +12,9 @@ const TechIcons: FC<TechIconsProps> = ({
   iconClassName,
   containerClassName
 }) => {
-  const uniqueTechs = Array.from(new Set(techs))
+  const uniqueTechs = Array.from(new Set(techs)).sort((a, b) =>
+    a.toLowerCase().localeCompare(b.toLowerCase())
+  )
 
   return (
     <>

@@ -27,11 +27,15 @@ import {
   SiVercel,
   SiSass,
   SiXampp,
-  SiFigma
+  SiFigma,
+  SiOpencv,
+  SiExpress
 } from 'react-icons/si'
-import { FaJava, FaPython, FaDocker, FaNode } from 'react-icons/fa'
+import { FaJava, FaPython, FaDocker, FaNode, FaGoogle, FaBootstrap } from 'react-icons/fa'
 import { FaGolang } from 'react-icons/fa6'
 import { twMerge } from 'tailwind-merge'
+import { FiFramer } from "react-icons/fi";
+
 
 const techIconMap: { [key: string]: FC<any> } = {
   javascript: SiJavascript,
@@ -66,7 +70,13 @@ const techIconMap: { [key: string]: FC<any> } = {
   vercel: SiVercel,
   sass: SiSass,
   xampp: SiXampp,
-  figma: SiFigma
+  figma: SiFigma,
+  opencv: SiOpencv,
+  'tesserac': FaGoogle,
+  imutils: FaPython,
+  bootstrap: FaBootstrap,
+  'framer motion': FiFramer,
+  express: SiExpress 
 }
 
 interface TechIconProps {
@@ -84,21 +94,27 @@ const TechIcon: FC<TechIconProps> = ({
 
   return (
     <div>
-      {Icon ? (
-        <div
-          className={twMerge(
-            'flex items-center justify-center gap-1',
-            containerClassName
-          )}
-        >
-          <Icon className={iconClassName} />
-          <span>
-            {tech === 'go' ? 'golang' : tech === 'c' ? 'language' : tech}
-          </span>
-        </div>
-      ) : (
-        <span>{tech}</span>
-      )}
+      <div
+        className={twMerge(
+          'flex items-center justify-center gap-1',
+          containerClassName
+        )}
+      >
+        {Icon ? (
+          <>
+            <Icon className={iconClassName} />
+            <span>
+              {tech === 'go'
+                ? 'Golang'
+                : tech === 'c'
+                  ? 'Language'
+                  : tech.charAt(0).toUpperCase() + tech.slice(1)}
+            </span>
+          </>
+        ) : (
+          <span>{tech.charAt(0).toUpperCase() + tech.slice(1)}</span>
+        )}
+      </div>
     </div>
   )
 }
