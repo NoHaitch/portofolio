@@ -3,7 +3,7 @@
 import { ProjectMetadata } from '@/lib/projects'
 import Projects from './projects'
 import TechIcon from './tech-icon'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
 import { CgClose } from 'react-icons/cg'
 
 export default function ProjectsWithSelection({
@@ -13,66 +13,65 @@ export default function ProjectsWithSelection({
   projects: ProjectMetadata[]
   setTechUsed: Set<string>
 }) {
-  const [selection, setSelection] = useState<string[]>([])
-  const [nonSelected, setNonSelected] = useState<string[]>([])
+  const [selection, setSelection] = useState<Set<string>>(new Set())
 
-  const handleTechClick = (tech: string) => {
-    setSelection(prevSelection =>
-      prevSelection.includes(tech)
-        ? prevSelection.filter(item => item !== tech)
-        : [...prevSelection, tech]
+  const handleTechClick = useCallback((tech: string) => {
+    setSelection(prevSelection => {
+      const newSelection = new Set(prevSelection)
+      if (newSelection.has(tech)) {
+        newSelection.delete(tech)
+      } else {
+        newSelection.add(tech)
+      }
+      return newSelection
+    })
+  }, [])
+
+  const handleReset = useCallback(() => {
+    setSelection(new Set())
+  }, [])
+
+  const filteredProjects = useMemo(() => {
+    if (selection.size === 0) return projects
+    return projects.filter(project =>
+      project.techUsed?.some(tech => selection.has(tech))
     )
-  }
+  }, [projects, selection])
 
-  const handleReset = () => {
-    setSelection([])
-  }
-
-  useEffect(() => {
-    const allTechs = Array.from(setTechUsed)
-    const nonSelectedTechs = allTechs.filter(tech => !selection.includes(tech))
-    setNonSelected(nonSelectedTechs)
-  }, [selection, setTechUsed])
-
-  const filteredProjects =
-    selection.length > 0
-      ? projects.filter(project =>
-          project.techUsed?.some(tech => selection.includes(tech))
-        )
-      : projects
+  const nonSelected = useMemo(() => {
+    return Array.from(setTechUsed).filter(tech => !selection.has(tech))
+  }, [setTechUsed, selection])
 
   return (
     <div>
       <div className='flex justify-between'>
         <h1 className='mb-1 font-semibold'>Selection</h1>
-        {selection.length !== 0 && (
-          <div
+        {selection.size !== 0 && (
+          <button
             className='rounded-xs flex cursor-pointer items-center justify-center gap-1 p-1 text-xs font-bold'
             onClick={handleReset}
           >
             <p>Reset</p>
             <CgClose />
-          </div>
+          </button>
         )}
       </div>
       <div className='mb-4 flex flex-row flex-wrap gap-1 dark:text-zinc-200'>
         {Array.from(selection).map(tech => (
-          <div
+          <TechButton
             key={tech}
-            className='flex cursor-pointer items-center justify-center gap-1 rounded-md bg-green-400 p-1 text-xs dark:bg-green-600'
-            onClick={() => handleTechClick(tech)}
-          >
-            <TechIcon tech={tech} iconClassName='size-4' />
-          </div>
+            tech={tech}
+            onClick={handleTechClick}
+            selected={true}
+          />
         ))}
-        {Array.from(nonSelected).map(tech => (
-          <div
+        {nonSelected.map(tech => (
+          <TechButton
             key={tech}
-            className='flex cursor-pointer items-center justify-center gap-1 rounded-md bg-zinc-300 p-1 text-xs dark:bg-zinc-700'
-            onClick={() => handleTechClick(tech)}
-          >
-            <TechIcon tech={tech} iconClassName='size-4' />
-          </div>
+            tech={tech}
+            onClick={handleTechClick}
+            selected={false}
+          />
         ))}
       </div>
       {filteredProjects.length !== 0 ? (
@@ -81,5 +80,18 @@ export default function ProjectsWithSelection({
         <p>No projects found</p>
       )}
     </div>
+  )
+}
+
+function TechButton({ tech, onClick, selected }: { tech: string; onClick: (tech: string) => void; selected: boolean }) {
+  return (
+    <button
+      className={`flex cursor-pointer items-center justify-center gap-1 rounded-md p-1 text-xs ${
+        selected ? 'bg-green-400 dark:bg-green-600' : 'bg-zinc-300 dark:bg-zinc-700'
+      }`}
+      onClick={() => onClick(tech)}
+    >
+      <TechIcon tech={tech} iconClassName='size-4' />
+    </button>
   )
 }

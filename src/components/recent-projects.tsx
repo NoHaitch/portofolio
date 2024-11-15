@@ -13,7 +13,7 @@ export default async function RecentProjects() {
           <>
             <ShortProjects projects={projects} />
             <div className='mt-32 inline-flex w-full items-center justify-center gap-2 text-muted-foreground'>
-              <Link href='/activities'>All projects</Link>
+              <Link href='/projects'>All projects</Link>
             </div>
           </>
         ) : (

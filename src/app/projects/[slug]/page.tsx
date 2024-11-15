@@ -1,99 +1,101 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { ArrowLeftIcon } from '@radix-ui/react-icons'
 
 import { getProjectBySlug, getProjects } from '@/lib/projects'
 import { formatDate } from '@/lib/utils'
-
 import MDXContent from '@/components/mdx-content'
-import { ArrowLeftIcon } from '@radix-ui/react-icons'
 import TechIcons from '@/components/tech-icons'
 
 export async function generateStaticParams() {
   const projects = await getProjects()
-  const slugs = projects.map(project => ({ slug: project.slug }))
-
-  return slugs
+  return projects.map(project => ({ slug: project.slug }))
 }
 
-export default async function Project({
-  params
-}: {
+interface ProjectProps {
   params: { slug: string }
-}) {
-  const { slug } = params
-  const project = await getProjectBySlug(slug)
+}
+
+export default async function Project({ params }: ProjectProps) {
+  const project = await getProjectBySlug(params.slug)
 
   if (!project) {
     notFound()
   }
 
-  const { metadata, content } = project
-  const { title, image, author, publishedAt, repository, techUsed } = metadata
+  const { title, image, author, publishedAt, repository, techUsed } =
+    project.metadata
 
   return (
-    <section className='pb-24 pt-32'>
-      <div className='container max-w-5xl'>
-        <Link
-          href='/projects'
-          className='mb-8 inline-flex items-center gap-2 text-sm font-light'
-        >
-          <ArrowLeftIcon className='size-5' />
-          <span>Back to projects</span>
-        </Link>
+    <section className='container max-w-5xl py-24'>
+      <Link
+        href='/projects'
+        className='mb-8 inline-flex items-center gap-2 text-sm font-light'
+      >
+        <ArrowLeftIcon className='size-5' />
+        <span>Back to projects</span>
+      </Link>
 
-        {image && (
-          <div className='relative mb-6 h-96 w-full overflow-hidden rounded-lg'>
-            <Image
-              src={image}
-              alt={title || ''}
-              className='object-cover'
-              fill
-            />
+      {image && (
+        <div className='relative mb-6 aspect-video w-full overflow-hidden rounded-lg'>
+          <Image
+            src={image}
+            alt={title || ''}
+            className='object-cover'
+            fill
+            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+            priority
+            quality={85}
+          />
+        </div>
+      )}
+
+      <header>
+        <h1 className='title'>{title}</h1>
+        <div className='flex items-center gap-2 text-sm font-light text-muted-foreground'>
+          {author && `${author} / `}
+          {formatDate(publishedAt ?? '')}
+        </div>
+
+        {repository && (
+          <div className='mt-2 flex gap-1'>
+            <p>Repository:</p>
+            <Link
+              href={repository}
+              className='underline'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              {repository}
+            </Link>
           </div>
         )}
 
-        <header className=''>
-          <h1 className='title'>{title}</h1>
-          <div className='flex items-center gap-2 text-sm font-light text-muted-foreground'>
-            {author} / {formatDate(publishedAt ?? ' ')}
+        {techUsed && (
+          <div className='mt-2 flex flex-wrap gap-1'>
+            <TechIcons
+              techs={techUsed}
+              iconClassName='size-4'
+              containerClassName='rounded-sm bg-zinc-300 dark:bg-zinc-700 p-1'
+            />
           </div>
+        )}
+      </header>
 
-          <div className='mt-2 flex gap-1'>
-            <p>Repository:</p>
-            {repository ? (
-              <Link href={repository} className='underline' target='_blank'>
-                {repository}
-              </Link>
-            ) : (
-              <span>Not Available</span>
-            )}
-          </div>
-
-          {techUsed && (
-            <div className='mt-2 line-clamp-2 flex flex-wrap gap-1 text-xs text-foreground'>
-              <TechIcons
-                techs={techUsed}
-                iconClassName='size-4'
-                containerClassName='rounded-sm bg-zinc-300 dark:bg-zinc-700 p-1'
-              />
-            </div>
-          )}
-        </header>
-
-        <main className='prose mt-16 max-w-5xl dark:prose-invert'>
-          <MDXContent source={content} />
-          {repository && (
-            <Link
-              href={`${repository}/blob/main/README.md`}
-              className='my-4 underline'
-              target='_blank'
-            >
-              For More Information, Checkout this Github README
-            </Link>
-          )}
-        </main>
-      </div>
+      <main className='prose mt-16 max-w-none dark:prose-invert'>
+        <MDXContent source={project.content} />
+        {repository && (
+          <Link
+            href={`${repository}/blob/main/README.md`}
+            className='mt-4 inline-block underline'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            For More Information, Check out this GitHub README
+          </Link>
+        )}
+      </main>
     </section>
   )
 }
