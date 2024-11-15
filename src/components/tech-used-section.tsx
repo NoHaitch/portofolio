@@ -3,11 +3,12 @@ import TechIcon from './tech-icon'
 
 export default async function TechUsedSection() {
   const projects = await getProjects()
-  const techUsed = await getTechUsedSet(projects)
+  const techUsedSet = await getTechUsedSet(projects)
+  const techUsed = Array.from(techUsedSet).sort()
 
   return (
     <section className='flex flex-wrap gap-1'>
-      {Array.from(techUsed).map(tech => (
+      {techUsed.map(tech => (
         <div
           key={tech}
           className='flex cursor-pointer items-center justify-center gap-1 rounded-md bg-zinc-300 p-1 text-xs dark:bg-zinc-700'

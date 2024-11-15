@@ -31,11 +31,19 @@ import {
   SiOpencv,
   SiExpress
 } from 'react-icons/si'
-import { FaJava, FaPython, FaDocker, FaNode, FaGoogle, FaBootstrap } from 'react-icons/fa'
+import {
+  FaJava,
+  FaPython,
+  FaDocker,
+  FaNode,
+  FaGoogle,
+  FaBootstrap
+} from 'react-icons/fa'
 import { FaGolang } from 'react-icons/fa6'
 import { twMerge } from 'tailwind-merge'
-import { FiFramer } from "react-icons/fi";
-
+import { FiFramer } from 'react-icons/fi'
+import { HiMiniCommandLine } from 'react-icons/hi2'
+import { DiProlog } from 'react-icons/di'
 
 const techIconMap: { [key: string]: FC<any> } = {
   javascript: SiJavascript,
@@ -72,11 +80,13 @@ const techIconMap: { [key: string]: FC<any> } = {
   xampp: SiXampp,
   figma: SiFigma,
   opencv: SiOpencv,
-  'tesserac': FaGoogle,
+  tesserac: FaGoogle,
   imutils: FaPython,
   bootstrap: FaBootstrap,
   'framer motion': FiFramer,
-  express: SiExpress 
+  express: SiExpress,
+  cli: HiMiniCommandLine,
+  prolog: DiProlog
 }
 
 interface TechIconProps {
@@ -106,9 +116,11 @@ const TechIcon: FC<TechIconProps> = ({
             <span>
               {tech === 'go'
                 ? 'Golang'
-                : tech === 'c'
-                  ? 'Language'
-                  : tech.charAt(0).toUpperCase() + tech.slice(1)}
+                : tech === 'cli'
+                  ? 'CLI'
+                  : tech === 'c'
+                    ? 'Language'
+                    : tech.charAt(0).toUpperCase() + tech.slice(1)}
             </span>
           </>
         ) : (
