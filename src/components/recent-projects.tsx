@@ -14,7 +14,7 @@ export default async function RecentProjects() {
             <ShortProjects projects={projects} />
             <div className='mt-8 text-center'>
               <Link
-                href='/activities'
+                href='/projects'
                 className='text-muted-foreground transition-colors hover:text-foreground'
               >
                 All projects

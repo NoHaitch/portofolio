@@ -29,7 +29,8 @@ import {
   SiXampp,
   SiFigma,
   SiOpencv,
-  SiExpress
+  SiExpress,
+  SiMariadb
 } from 'react-icons/si'
 import {
   FaJava,
@@ -44,6 +45,7 @@ import { twMerge } from 'tailwind-merge'
 import { FiFramer } from 'react-icons/fi'
 import { HiMiniCommandLine } from 'react-icons/hi2'
 import { DiProlog } from 'react-icons/di'
+import { MdOutlineFormatShapes, MdWeb } from 'react-icons/md'
 
 const techIconMap: { [key: string]: FC<any> } = {
   javascript: SiJavascript,
@@ -86,7 +88,10 @@ const techIconMap: { [key: string]: FC<any> } = {
   'framer motion': FiFramer,
   express: SiExpress,
   cli: HiMiniCommandLine,
-  prolog: DiProlog
+  prolog: DiProlog,
+  gui: MdOutlineFormatShapes,
+  web: MdWeb,
+  mariadb: SiMariadb
 }
 
 interface TechIconProps {
