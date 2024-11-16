@@ -8,12 +8,17 @@ export default async function RecentProjects() {
   return (
     <section className='pb-24'>
       <div>
-        <h2 className='title mb-8 text-2xl'>Recent Projects</h2>
+        <h2 className='mb-4 font-serif text-2xl font-bold'>Recent Projects</h2>
         {projects.length !== 0 ? (
           <>
             <ShortProjects projects={projects} />
-            <div className='mt-32 inline-flex w-full items-center justify-center gap-2 text-muted-foreground'>
-              <Link href='/projects'>All projects</Link>
+            <div className='mt-8 text-center'>
+              <Link
+                href='/activities'
+                className='text-muted-foreground transition-colors hover:text-foreground'
+              >
+                All projects
+              </Link>
             </div>
           </>
         ) : (

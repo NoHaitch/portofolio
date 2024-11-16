@@ -7,15 +7,18 @@ export default async function TechUsedSection() {
   const techUsed = Array.from(techUsedSet).sort()
 
   return (
-    <section className='flex flex-wrap gap-1'>
-      {techUsed.map(tech => (
-        <div
-          key={tech}
-          className='flex cursor-pointer items-center justify-center gap-1 rounded-md bg-zinc-300 p-1 text-xs dark:bg-zinc-700'
-        >
-          <TechIcon tech={tech} iconClassName='size-4' />
-        </div>
-      ))}
+    <section aria-labelledby='tech-used-title'>
+      <div className='flex flex-wrap gap-2'>
+        {techUsed.map(tech => (
+          <div
+            key={tech}
+            className='flex items-center justify-center rounded-md bg-zinc-300 p-2 text-xs transition-all duration-300 ease-in-out hover:bg-zinc-400 hover:shadow-md dark:bg-zinc-700 dark:hover:bg-zinc-600'
+            title={tech}
+          >
+            <TechIcon tech={tech} iconClassName='size-5' />
+          </div>
+        ))}
+      </div>
     </section>
   )
 }

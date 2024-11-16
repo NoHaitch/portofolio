@@ -2,30 +2,30 @@ import { PostMetadata } from '@/lib/posts'
 import { formatDate } from '@/lib/utils'
 import Link from 'next/link'
 
-export default function ShortPost({ posts }: { posts: PostMetadata[] }) {
+interface ShortPostProps {
+  posts: PostMetadata[]
+}
+
+export default function ShortPost({ posts }: ShortPostProps) {
   return (
     <ul className='flex flex-col gap-4'>
       {posts.map(post => (
         <li
           key={post.slug}
-          className='w-full rounded-lg bg-[#e3e3e3] px-4 py-2 dark:bg-[#1b1b1b]'
+          className='w-full rounded-lg bg-zinc-200 px-4 py-2 transition-transform hover:scale-105 dark:bg-zinc-800'
         >
           <Link
             href={`/activities/${post.slug}`}
-            className='flex flex-col justify-between gap-x-4 gap-y-1'
+            className='flex items-center justify-between gap-4'
           >
-            <div className=''>
-              <div className='flex justify-between'>
-                <p className='line-clamp-1 text-sm font-semibold'>
-                  {post.title}
-                </p>
-                {post.publishedAt && (
-                  <p className='mt-1 w-1/4 text-right text-xs font-light sm:text-sm'>
-                    {formatDate(post.publishedAt)}
-                  </p>
-                )}
-              </div>
-            </div>
+            <p className='line-clamp-1 flex-grow text-lg font-semibold'>
+              {post.title}
+            </p>
+            {post.publishedAt && (
+              <p className='shrink-0 text-right text-xs font-light text-muted-foreground sm:text-sm'>
+                {formatDate(post.publishedAt)}
+              </p>
+            )}
           </Link>
         </li>
       ))}

@@ -14,8 +14,8 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Francisco Portofolio',
-  description: 'Francisco Web Portofolio'
+  title: 'Francisco Portfolio',
+  description: 'Francisco Web Portfolio'
 }
 
 export default function RootLayout({
@@ -32,15 +32,40 @@ export default function RootLayout({
           playfair.variable
         )}
       >
+        <noscript>
+          <style>{`
+            .js-only { display: none; }
+            .no-js-message { 
+              display: block;
+              padding: 1rem;
+              background-color: #ffdd57;
+              color: #3e3e3e;
+              text-align: center;
+            }
+          `}</style>
+          <div className='no-js-message'>
+            This website works best with JavaScript enabled. Some features may
+            be limited without it.
+          </div>
+        </noscript>
+
         <CustomThemeProvider>
-          <section className='flex justify-center'>
-            <section className='w-[90%]'>
+          <div className='flex justify-center'>
+            <div className='w-[90%] max-w-7xl'>
               <Header />
               <main className='grow'>{children}</main>
               <Footer />
-            </section>
-          </section>
+            </div>
+          </div>
         </CustomThemeProvider>
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          document.body.classList.add('js-enabled');
+        `
+          }}
+        />
       </body>
     </html>
   )
