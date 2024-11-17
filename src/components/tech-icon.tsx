@@ -30,7 +30,9 @@ import {
   SiFigma,
   SiOpencv,
   SiExpress,
-  SiMariadb
+  SiMariadb,
+  SiQemu,
+  SiFlask
 } from 'react-icons/si'
 import {
   FaJava,
@@ -46,6 +48,8 @@ import { FiFramer } from 'react-icons/fi'
 import { HiMiniCommandLine } from 'react-icons/hi2'
 import { DiProlog } from 'react-icons/di'
 import { MdOutlineFormatShapes, MdWeb } from 'react-icons/md'
+import { GrSystem } from 'react-icons/gr'
+import { DiGnu } from 'react-icons/di'
 
 const techIconMap: { [key: string]: FC<any> } = {
   javascript: SiJavascript,
@@ -91,7 +95,11 @@ const techIconMap: { [key: string]: FC<any> } = {
   prolog: DiProlog,
   gui: MdOutlineFormatShapes,
   web: MdWeb,
-  mariadb: SiMariadb
+  mariadb: SiMariadb,
+  os: GrSystem,
+  gnu: DiGnu,
+  qemu: SiQemu,
+  flask: SiFlask
 }
 
 interface TechIconProps {

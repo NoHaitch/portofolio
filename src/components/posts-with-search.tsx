@@ -1,35 +1,46 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { PostMetadata } from '@/lib/posts'
-
 import Posts from './posts'
 import { Button } from './ui/button'
 import { Cross2Icon } from '@radix-ui/react-icons'
 import { Input } from './ui/input'
 
-export default function PostsWithSearch({ posts }: { posts: PostMetadata[] }) {
+interface PostsWithSearchProps {
+  posts: PostMetadata[]
+}
+
+export default function PostsWithSearch({ posts }: PostsWithSearchProps) {
   const [query, setQuery] = useState('')
-  const filtered = posts.filter(post =>
-    post.title?.toLowerCase().includes(query.toLowerCase())
+
+  const filteredPosts = useMemo(
+    () =>
+      posts.filter(post =>
+        post.title?.toLowerCase().includes(query.toLowerCase())
+      ),
+    [posts, query]
   )
 
-  const isFiltered = query.length > 0
-  function resetFilter() {
+  const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value)
+  }
+
+  const resetFilter = () => {
     setQuery('')
   }
 
   return (
-    <div className=''>
+    <div>
       <div className='mb-8 flex items-center gap-3'>
         <Input
           type='text'
-          placeholder='search posts'
+          placeholder='Search posts'
           className='h-9 w-full border-2 sm:w-2/3'
           value={query}
-          onChange={e => setQuery(e.target.value)}
+          onChange={handleQueryChange}
         />
-        {isFiltered && (
+        {query && (
           <Button
             size='sm'
             variant='secondary'
@@ -41,7 +52,7 @@ export default function PostsWithSearch({ posts }: { posts: PostMetadata[] }) {
           </Button>
         )}
       </div>
-      <Posts posts={filtered} />
+      <Posts posts={filteredPosts} />
     </div>
   )
 }

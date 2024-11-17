@@ -15,7 +15,7 @@ const NAV_ITEMS = [
   { href: '/projects', label: 'Projects' },
   { href: '/activities', label: 'Activities' },
   { href: '/contacts', label: 'Contact' }
-]
+] as const
 
 const NavItem = memo(({ href, label }: { href: string; label: string }) => (
   <li>
@@ -35,9 +35,7 @@ const MobileNavMenu = memo(() => (
       <DropdownMenuGroup>
         {NAV_ITEMS.map(({ href, label }) => (
           <DropdownMenuItem key={href} asChild>
-            <Link href={href} className='w-full'>
-              {label}
-            </Link>
+            <Link href={href}>{label}</Link>
           </DropdownMenuItem>
         ))}
       </DropdownMenuGroup>
@@ -48,8 +46,8 @@ MobileNavMenu.displayName = 'MobileNavMenu'
 
 const DesktopNav = memo(() => (
   <ul className='hidden items-center gap-6 text-sm font-light text-muted-foreground sm:flex'>
-    {NAV_ITEMS.map(({ href, label }) => (
-      <NavItem key={href} href={href} label={label} />
+    {NAV_ITEMS.map(item => (
+      <NavItem key={item.href} {...item} />
     ))}
   </ul>
 ))
