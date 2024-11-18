@@ -3,7 +3,7 @@
 import { z } from 'zod'
 import Link from 'next/link'
 import { toast } from 'sonner'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ContactFormSchema } from '@/lib/schemas'
 import { Input } from './ui/input'
@@ -20,98 +20,83 @@ export default function ContactForm() {
     reset,
     formState: { errors, isSubmitting }
   } = useForm<Inputs>({
-    resolver: zodResolver(ContactFormSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      message: ''
-    }
+    resolver: zodResolver(ContactFormSchema)
   })
 
-  const processForm: SubmitHandler<Inputs> = async data => {
-    const result = await sendEmail(data)
-
-    if (result?.error) {
-      toast.error('An error occured! Please try again.')
-      return
+  const processForm = async (data: Inputs) => {
+    try {
+      await sendEmail(data)
+      toast.success('Message sent successfully!')
+      reset()
+    } catch (error) {
+      toast.error('An error occurred! Please try again.')
     }
-
-    toast.success('Message sent successfully!')
-    reset()
   }
 
   return (
-    <div className='relative'>
-      <form
-        onSubmit={handleSubmit(processForm)}
-        className='mt-16 lg:flex-auto'
-        noValidate
-      >
-        <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
-          <div>
-            <Input
-              id='name'
-              type='text'
-              placeholder='Name'
-              autoComplete='given-name'
-              className='border-2'
-              {...register('name')}
-            />
-
-            {errors.name?.message && (
-              <p className='ml-1 mt-2 text-sm text-rose-400'>
-                {errors.name.message}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <Input
-              id='email'
-              type='email'
-              placeholder='Email'
-              autoComplete='email'
-              className='border-2'
-              {...register('email')}
-            />
-
-            {errors.email?.message && (
-              <p className='ml-1 mt-2 text-sm text-rose-400'>
-                {errors.email.message}
-              </p>
-            )}
-          </div>
-
-          <div className='sm:col-span-2'>
-            <Textarea
-              rows={6}
-              placeholder='Message'
-              {...register('message')}
-              className='border-2'
-            />
-            {errors.message?.message && (
-              <p className='ml-1 mt-2 text-sm text-rose-400'>
-                {errors.message.message}
-              </p>
-            )}
-          </div>
+    <form
+      onSubmit={handleSubmit(processForm)}
+      className='mt-8 space-y-6'
+      noValidate
+    >
+      <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
+        <div>
+          <Input
+            id='name'
+            placeholder='Name'
+            autoComplete='name'
+            {...register('name')}
+            aria-invalid={errors.name ? 'true' : 'false'}
+          />
+          {errors.name && (
+            <p className='mt-1 text-sm text-red-500' role='alert'>
+              {errors.name.message}
+            </p>
+          )}
         </div>
-        <div className='mt-6'>
-          <Button
-            className='w-full disabled:opacity-50'
-            type='submit'
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? 'Submitting...' : 'Contact Us'}
-          </Button>
+
+        <div>
+          <Input
+            id='email'
+            type='email'
+            placeholder='Email'
+            autoComplete='email'
+            {...register('email')}
+            aria-invalid={errors.email ? 'true' : 'false'}
+          />
+          {errors.email && (
+            <p className='mt-1 text-sm text-red-500' role='alert'>
+              {errors.email.message}
+            </p>
+          )}
         </div>
-        <p className='mt-4 text-xs text-muted-foreground'>
-          By submitting this form, I agree to the{' '}
-          <Link href='/privacy' className='font-bold'>
-            privacy&nbsp;policy.
-          </Link>
-        </p>
-      </form>
-    </div>
+      </div>
+
+      <div>
+        <Textarea
+          rows={6}
+          placeholder='Message'
+          {...register('message')}
+          aria-invalid={errors.message ? 'true' : 'false'}
+        />
+        {errors.message && (
+          <p className='mt-1 text-sm text-red-500' role='alert'>
+            {errors.message.message}
+          </p>
+        )}
+      </div>
+
+      <Button className='w-full' type='submit' disabled={isSubmitting}>
+        {isSubmitting ? 'Submitting...' : 'Contact Us'}
+      </Button>
+
+      <p className='text-xs text-muted-foreground'>
+        By submitting this form, I agree to the{' '}
+        <Link href='/privacy' className='font-semibold hover:underline'>
+          privacy policy
+        </Link>
+        .
+      </p>
+    </form>
   )
 }

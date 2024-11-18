@@ -51,7 +51,7 @@ export default function RootLayout({
 
         <CustomThemeProvider>
           <div className='flex justify-center'>
-            <div className='w-[90%] max-w-7xl'>
+            <div className='w-[95%] max-w-7xl md:w-[90%]'>
               <Header />
               <main className='grow'>{children}</main>
               <Footer />
