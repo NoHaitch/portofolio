@@ -50,6 +50,7 @@ import { DiProlog } from 'react-icons/di'
 import { MdOutlineFormatShapes, MdWeb } from 'react-icons/md'
 import { GrSystem } from 'react-icons/gr'
 import { DiGnu } from 'react-icons/di'
+import { TbHexagonLetterRFilled } from 'react-icons/tb'
 
 const techIconMap: { [key: string]: FC<any> } = {
   javascript: SiJavascript,
@@ -99,7 +100,8 @@ const techIconMap: { [key: string]: FC<any> } = {
   os: GrSystem,
   gnu: DiGnu,
   qemu: SiQemu,
-  flask: SiFlask
+  flask: SiFlask,
+  rest: TbHexagonLetterRFilled
 }
 
 interface TechIconProps {
