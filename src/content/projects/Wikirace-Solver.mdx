@@ -1,0 +1,35 @@
+---
+    title: Wikirace Solver
+    description: Wikirace Solver using combination of BFS and IDS
+    image: '/images/projects/Wikirace-Solver.png'
+    author: 'Francisco Trianto'
+    publishedAt: '2024-04-27'
+    repository: https://github.com/NoHaitch/Wikirace-Solver-FE
+    techUsed: [javascript, web, react, tailwind, docker, go]
+---
+
+Wikirace Solver web application, using the combination of BFS and IDS to solve Wikirace
+
+Frontend: [https://github.com/NoHaitch/Wikirace-Solver-FE](https://github.com/NoHaitch/Wikirace-Solver-FE)  
+Backend: [https://github.com/NoHaitch/Wikirace-Solver-BE](https://github.com/NoHaitch/Wikirace-Solver-BE)  
+
+## Wikirace 
+
+Wikirace is a game of finding the fastest way to get from a source Wikipedia page to a target page, 
+where the number of links needed matters to the amount of time to reach the target page.
+
+To solve this problem we used both BFS and IDS to find the unkown solution. Turns out this process 
+takes a very long time. Assuming that in each page there is around 50 links to another article. On 
+the fourth level of depth there will be 50^4 or 6 milion links to check. Since we were scraping and 
+not using wikipedia API, this become super hard to do fast. 
+
+We scrape since it was one of the condition given by the assistant. Don't do illegal scraping please!
+
+
+You can checkout the report(Indonesian) in the link below:
+[https://github.com/NoHaitch/Wikirace-Solver-FE/blob/main/doc/Chibye.pdf](https://github.com/NoHaitch/Wikirace-Solver-FE/blob/main/doc/Chibye.pdf)
+
+By Kelompok Chibye:
+- 13522029 Ignatius Jhon Hezkiel Chan
+- 13522091 Raden Francisco Trianto Bratadiningrat
+- 13522098 Suthasoma Mahardhika Munthe
