@@ -60,7 +60,10 @@ const techIconMap: Record<string, IconType> = {
   gnu: DiGnu,
   qemu: Si.SiQemu,
   flask: Si.SiFlask,
-  rest: TbHexagonLetterRFilled
+  rest: TbHexagonLetterRFilled,
+  jupyter: Si.SiJupyter,
+  pandas: Si.SiPandas,
+
 }
 
 interface TechIconProps {

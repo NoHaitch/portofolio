@@ -18,14 +18,16 @@ interface ProjectProps {
 }
 
 export default async function Project({ params }: ProjectProps) {
-  const project = await getProjectBySlug(params.slug)
+  const { slug } = await params
+
+  const project = await getProjectBySlug(slug)
 
   if (!project) {
     notFound()
   }
 
   const { title, image, author, publishedAt, repository, techUsed } =
-    project.metadata
+    project.metadata;
 
   return (
     <section className='container max-w-5xl py-24'>
@@ -34,7 +36,6 @@ export default async function Project({ params }: ProjectProps) {
         className='mb-8 inline-flex items-center gap-2 text-sm font-light'
       >
         <ArrowLeftIcon className='size-5' />
-        <span>Back to projects</span>
       </Link>
 
       {image && (
