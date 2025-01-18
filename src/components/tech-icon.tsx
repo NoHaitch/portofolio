@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { IconType } from 'react-icons'
 import * as Si from 'react-icons/si'
 import * as Fa from 'react-icons/fa'
+import * as Pi from 'react-icons/pi'
 import { FaGolang } from 'react-icons/fa6'
 import { FiFramer } from 'react-icons/fi'
 import { HiMiniCommandLine } from 'react-icons/hi2'
@@ -33,7 +34,7 @@ const techIconMap: Record<string, IconType> = {
   tailwind: Si.SiTailwindcss,
   java: Fa.FaJava,
   c: Si.SiC,
-  cpp: Si.SiCplusplus,
+  'c++': Si.SiCplusplus,
   make: Si.SiMake,
   numpy: Si.SiNumpy,
   docker: Fa.FaDocker,
@@ -63,7 +64,10 @@ const techIconMap: Record<string, IconType> = {
   rest: TbHexagonLetterRFilled,
   jupyter: Si.SiJupyter,
   pandas: Si.SiPandas,
-
+  ai: Pi.PiHeadCircuit,
+  'scikit learn': Si.SiScikitlearn,
+  vite: Si.SiVite,
+  prisma: Si.SiPrisma,
 }
 
 interface TechIconProps {
