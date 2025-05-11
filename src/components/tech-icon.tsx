@@ -68,6 +68,9 @@ const techIconMap: Record<string, IconType> = {
   'scikit learn': Si.SiScikitlearn,
   vite: Si.SiVite,
   prisma: Si.SiPrisma,
+  ml: Fa.FaCogs,
+  keras: Si.SiKeras,
+  tensorflow: Si.SiTensorflow
 }
 
 interface TechIconProps {
