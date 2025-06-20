@@ -10,6 +10,7 @@ import { DiProlog, DiGnu } from 'react-icons/di'
 import { MdOutlineFormatShapes, MdWeb } from 'react-icons/md'
 import { GrSystem } from 'react-icons/gr'
 import { TbHexagonLetterRFilled } from 'react-icons/tb'
+import { CiMobile1 } from 'react-icons/ci'
 import { twMerge } from 'tailwind-merge'
 
 const techIconMap: Record<string, IconType> = {
@@ -70,7 +71,10 @@ const techIconMap: Record<string, IconType> = {
   prisma: Si.SiPrisma,
   ml: Fa.FaCogs,
   keras: Si.SiKeras,
-  tensorflow: Si.SiTensorflow
+  tensorflow: Si.SiTensorflow,
+  mobile: CiMobile1,
+  kotlin: Si.SiKotlin,
+  android: Si.SiAndroid
 }
 
 interface TechIconProps {
